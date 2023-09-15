@@ -94,4 +94,4 @@ El objetivo es permitir el control de ventas de manera automatizada e intuitivo,
 ## Despliegue
 
 - API: https://bcp-metas.azurewebsites.net/
-- FE: https://bcp-metas.azurewebsites.net/Ventas
+- FE: https://bcp-metas-fe.azurewebsites.net/Ventas
