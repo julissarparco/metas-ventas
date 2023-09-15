@@ -90,3 +90,8 @@ El objetivo es permitir el control de ventas de manera automatizada e intuitivo,
 - Crear un nuevo Asesor Comercial
 - Crear un nuevo Cliente
 - Crear una nueva Venta
+
+## Despliegue
+
+- API: https://bcp-metas.azurewebsites.net/
+- FE: https://bcp-metas.azurewebsites.net/Ventas
