@@ -41,6 +41,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Presentation", "01. Pre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BCP.META.Presentation", "BCP.META.Presentation\BCP.META.Presentation.csproj", "{45735B6A-FB6A-4057-91A4-76D8886EC8E8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11. Misc", "11. Misc", "{241AE610-E098-40FE-BA17-644457435CB8}"
+	ProjectSection(SolutionItems) = preProject
+		db.sql = db.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
