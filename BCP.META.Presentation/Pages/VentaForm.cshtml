@@ -1,0 +1,59 @@
+﻿@page
+@using BCP.META.Presentation.Services;
+@model BCP.META.Presentation.Pages.VentaFormModel
+
+@{
+    ViewData["Title"] = "Ventas";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+    int agenciaId = 1;
+}
+
+<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+        <a class="btn btn-outline-success" asp-page="ClienteForm">
+            <i class="fa-solid fa-plus"></i> Registrar Cliente
+        </a>
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="Periodo">Periodo</label>
+                    <select class="form-control" id="Periodo" asp-for="Periodo" asp-items="@(new SelectList(Model.Periodos))"></select>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="c">Asesor Comercial</label>
+                    <select class="form-control" id="AsesorComercial" asp-for="AsesorComercial" asp-items="@(new SelectList(Model.AsesoresComerciales))"></select>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </div>
+
+
+    </form>
+</div>
