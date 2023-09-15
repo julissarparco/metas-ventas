@@ -1,7 +1,11 @@
+using BCP.META.Presentation.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddTransient<VentasService>();
 
 var app = builder.Build();
 

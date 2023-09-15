@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace BCP.META.Domain.Entities
+﻿namespace BCP.META.Presentation.Entities
 {
     public class Venta
     {

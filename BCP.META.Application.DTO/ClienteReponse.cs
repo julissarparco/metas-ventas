@@ -2,7 +2,7 @@
 
 namespace BCP.META.Application.DTO
 {
-    public class ClienteReponse
+    public class ClienteResponse
     {
         [JsonPropertyName("id")]
         public int ClienteId { get; set; }

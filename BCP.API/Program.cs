@@ -2,8 +2,8 @@ using AutoMapper;
 using BCP.Distributed.Config;
 using BCP.META.Application.Service.Classes;
 using BCP.META.Application.Service.Interfaces;
+using BCP.META.Infrastructure.UnitOfWork.Classes;
 using BCP.META.Infrastructure.UnitOfWork.Interfaces;
-using CVBCRP.Infrastructure.UnitOfWork.Classes;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +15,7 @@ builder.Services.AddScoped<IProductoComercialService, ProductoComercialService>(
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IVentaService, VentaService>();
 builder.Services.AddScoped<IAsesorComercialService, AsesorComercialService>();
+builder.Services.AddScoped<IMetaMensualService, MetaMensualService>();
 builder.Services.AddSingleton<IUnitOfWork>(new UnitOfWork(builder.Configuration.GetConnectionString("BD_BCP")));
 
 var mapperConfig = new MapperConfiguration(cfg =>

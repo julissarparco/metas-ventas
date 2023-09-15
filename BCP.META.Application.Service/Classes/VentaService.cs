@@ -28,6 +28,44 @@ namespace BCP.META.Application.Service.Classes
             _mapper = mapper;
         }
 
+        public Task<ResponseModel<VentasReponse>> GetAllVentas()
+        {
+            const string methodName = "Venta/GetAllVentas";
+            AuditResponse auditResponse = new();
+            ResponseModel<VentasReponse> response = new();
+            ConfigurationHelper config = new();
+
+            try
+            {
+                var lst = _unitOfWork.ventaRepository.GetAllVentas();
+                var res = _mapper.Map<IEnumerable<Venta>, IEnumerable<VentasReponse>>(lst);
+                response.EntityList = res;
+                config.GetResponseCode(ref auditResponse, (int)ConfigurationHelper.CodeResponseService.Success, string.Empty);
+                response.AuditResponse = auditResponse;
+                return Task.Run(() => response);
+            }
+            catch (SqlException ex)
+            {
+                Logger.LoggerInstance()
+                    .RegisterError(ex, methodName, string.Empty, Environment.MachineName, string.Empty);
+                config.GetResponseCode(ref auditResponse, ex.Number, ex.Message);
+                response.IsValid = false;
+                response.AuditResponse = auditResponse;
+                return Task.Run(() => response);
+            }
+            catch (Exception ex)
+            {
+                Logger.LoggerInstance()
+                    .RegisterError(ex, methodName, string.Empty, Environment.MachineName, string.Empty);
+                config.GetResponseCode(ref auditResponse, (int)ConfigurationHelper.CodeResponseService.UnexpectedError,
+                    string.Empty);
+                response.IsValid = false;
+                response.AuditResponse = auditResponse;
+                return Task.Run(() => response);
+            }
+
+        }
+
         public Task<ResponseModel<GeneralResponse>> Post(VentaCreateRequest venta)
         {
             const string methodName = "Venta/Post";
@@ -99,7 +137,7 @@ namespace BCP.META.Application.Service.Classes
                 oVenta.MetaMensualId = metaMensual.MetaId;
                 GeneralResponse res = _unitOfWork.ventaRepository.Post(oVenta);
                 response.Entity = res;
-                config.GetResponseCode(ref auditResponse, (int)ConfigurationHelper.CodeResponseService.Created, string.Empty);
+                config.GetResponseCode(ref auditResponse, (int)ConfigurationHelper.CodeResponseService.Success, string.Empty);
                 response.AuditResponse = auditResponse;
                 return Task.Run(() => response);
             }

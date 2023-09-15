@@ -3,7 +3,7 @@ using BCP.META.Infrastructure.Repository.Interfaces;
 using BCP.META.Infrastructure.UnitOfWork.Interfaces;
 using System.Data;
 
-namespace CVBCRP.Infrastructure.UnitOfWork.Classes
+namespace BCP.META.Infrastructure.UnitOfWork.Classes
 {
     public class UnitOfWork : IUnitOfWork
     {

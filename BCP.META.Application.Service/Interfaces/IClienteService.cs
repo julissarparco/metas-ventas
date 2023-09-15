@@ -5,8 +5,8 @@ namespace BCP.META.Application.Service.Interfaces
 {
     public interface IClienteService
     {
-        Task<ResponseModel<ClienteReponse>> GetAllClientes();
-        Task<ResponseModel<ClienteReponse>> GetClienteById(int id);
+        Task<ResponseModel<ClienteResponse>> GetAllClientes();
+        Task<ResponseModel<ClienteResponse>> GetClienteById(int id);
         Task<ResponseModel<GeneralResponse>> Post(ClienteCreateRequest cliente);
     }
 }

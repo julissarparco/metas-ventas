@@ -24,18 +24,18 @@ namespace BCP.META.Application.Service.Classes
             _mapper = mapper;
         }
 
-        public Task<ResponseModel<ClienteReponse>> GetAllClientes()
+        public Task<ResponseModel<ClienteResponse>> GetAllClientes()
         {
             const string methodName = "Cliente/GetAllClientes";
             AuditResponse auditResponse = new();
-            ResponseModel<ClienteReponse> response = new();
+            ResponseModel<ClienteResponse> response = new();
             ConfigurationHelper config = new();
 
             try
             {
                 var lst = _unitOfWork.clienteRepository.GetAllClientes();
-                var lstProductsResponse = _mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteReponse>>(lst);
-                response.EntityList = lstProductsResponse;
+                var res = _mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteResponse>>(lst);
+                response.EntityList = res;
                 config.GetResponseCode(ref auditResponse, (int)ConfigurationHelper.CodeResponseService.Success, string.Empty);
                 response.AuditResponse = auditResponse;
                 return Task.Run(() => response);
@@ -58,17 +58,17 @@ namespace BCP.META.Application.Service.Classes
             }
         }
 
-        public Task<ResponseModel<ClienteReponse>> GetClienteById(int id)
+        public Task<ResponseModel<ClienteResponse>> GetClienteById(int id)
         {
             const string methodName = "Cliente/GetClienteById";
             AuditResponse auditResponse = new();
-            ResponseModel<ClienteReponse> response = new();
+            ResponseModel<ClienteResponse> response = new();
             ConfigurationHelper config = new();
 
             try
             {
                 var obj = _unitOfWork.clienteRepository.GetClienteById(id);
-                var cliente = _mapper.Map<Cliente, ClienteReponse>(obj);
+                var cliente = _mapper.Map<Cliente, ClienteResponse>(obj);
 
                 if (cliente == null)
                 {

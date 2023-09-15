@@ -12,14 +12,17 @@ namespace BCP.Distributed.Config
         /// <summary>
         /// Builder
         /// </summary>
-        public SimpleMapping() {
+        public SimpleMapping()
+        {
             CreateMap<Agencia, AgenciaResponse>().ReverseMap();
             CreateMap<ProductoComercial, ProductoComercialResponse>().ReverseMap();
             CreateMap<Cliente, ClienteResponse>().ReverseMap();
-            CreateMap<Venta, VentaCreateResponse>().ReverseMap();
             CreateMap<VentaCreateRequest, Venta>().ReverseMap();
             CreateMap<AsesorComercialCreateRequest, AsesorComercial>().ReverseMap();
             CreateMap<AsesorComercial, AsesorComercialResponse>().ReverseMap();
+            CreateMap<MetaMensualCreateRequest, MetaMensual>().ReverseMap();
+            CreateMap<ClienteCreateRequest, Cliente>().ReverseMap();
+            CreateMap<Venta, VentasReponse>().ReverseMap();
         }
     }
 }

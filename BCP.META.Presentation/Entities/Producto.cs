@@ -1,8 +1,8 @@
 ﻿namespace BCP.META.Presentation.Entities
 {
-    public class AsesorComercial
+    public class Producto
     {
-        public int Id { get; set; }
+        public int ProductoId { get; set; }
         public string Nombre { get; set; }
     }
 }

@@ -1,0 +1,52 @@
+﻿@page
+@using BCP.META.Presentation.Entities;
+@using BCP.META.Presentation.Services;
+@model BCP.META.Presentation.Pages.VentasModel
+@inject VentasService VentasService
+@{
+    ViewData["Title"] = "Ventas";
+}
+
+<div>
+    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a class="btn btn-success disabled" asp-page="VentaForm">
+                <i class="fa-solid fa-plus"></i> Registrar Venta
+            </a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Periodo</th>
+                <th scope="col">Asesor Comercial</th>
+                <th scope="col">Producto Financiero</th>
+                <th scope="col">Fecha Venta</th>
+                <th scope="col">Monto Prestamo</th>
+                <th scope="col">Monto Desembolsado</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var venta in (List<Venta>)ViewData["Ventas"])
+            {
+                <tr>
+                    <th scope="row">@venta.RowId</th>
+                    <td>@venta.ClienteNombres @venta.ClienteApellidos</td>
+                    <td>@venta?.PeriodoAnio - @venta.PeriodoMes</td>
+                    <td>@venta?.AsesorNombres</td>
+                    <td>@venta?.ProductoNombres</td>
+                    <td>@venta?.FechaVenta</td>
+                    <td>@venta?.MontoPrestamo</td>
+                    <td>@venta?.MontoDesembolsado</td>
+                    <td>
+                        <a class="btn btn-warning disabled"> <i class="fa-solid fa-pen"></i> Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

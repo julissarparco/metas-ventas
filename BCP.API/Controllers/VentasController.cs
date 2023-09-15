@@ -32,5 +32,17 @@ namespace BCP.Distributed.Controllers
                 ? StatusCode(response.AuditResponse.StatusCode, response)
                 : Ok(response);
         }
+
+        [HttpGet]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetVentas()
+        {
+            Log.Info($"Init: run GetVentas Venta");
+            var response = await VentaService.GetAllVentas();
+            return !response.IsValid
+                ? StatusCode(response.AuditResponse.StatusCode, response)
+                : Ok(response);
+        }
     } 
 }

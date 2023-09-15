@@ -35,8 +35,8 @@ namespace BCP.META.Application.Service.Classes
             try
             {
                 var lst = _unitOfWork.agenciaRepository.GetAllAgencias();
-                var lstProductsResponse = _mapper.Map<IEnumerable<Agencia>, IEnumerable<AgenciaResponse>>(lst);
-                response.EntityList = lstProductsResponse;
+                var res = _mapper.Map<IEnumerable<Agencia>, IEnumerable<AgenciaResponse>>(lst);
+                response.EntityList = res;
                 config.GetResponseCode(ref auditResponse, (int)ConfigurationHelper.CodeResponseService.Success, string.Empty);
                 response.AuditResponse = auditResponse;
                 return Task.Run(() => response);

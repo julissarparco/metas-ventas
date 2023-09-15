@@ -5,6 +5,7 @@ namespace BCP.META.Application.Service.Interfaces
 {
     public interface IVentaService
     {
+        Task<ResponseModel<VentasReponse>> GetAllVentas();
         Task<ResponseModel<GeneralResponse>> Post(VentaCreateRequest response);
     }
 }
